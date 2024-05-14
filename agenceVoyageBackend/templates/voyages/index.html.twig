@@ -25,8 +25,6 @@
 					<td>{{ voyage.dateDebut ? voyage.dateDebut|date('d-m-Y') : '' }}</td>
 					<td>{{ voyage.dateFin ? voyage.dateFin|date('d-m-Y') : '' }}</td>
 					<td>{{ voyage.prix }}</td>
-					{# <td>{{ voyage.categorie.nom }}</td> #}
-					{# <td>{{ voyage.getCategories() }}</td> #}
 					{% for categorie in voyage.categories %}
 						<td>{{categorie.nom}}</td>
 					{% endfor %}

@@ -1,34 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Voyages{% endblock %}
+{% block title %}Voyages
+{% endblock %}
 
 {% block body %}
-    <h1>Voyages</h1>
+	<h1>Voyages</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ voyage.id }}</td>
-            </tr>
-            <tr>
-                <th>DateDebut</th>
-                <td>{{ voyage.dateDebut ? voyage.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>DateFin</th>
-                <td>{{ voyage.dateFin ? voyage.dateFin|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>{{ voyage.prix }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ voyage.id }}</td>
+			</tr>
+			<tr>
+				<th>Pays</th>
+				<td>{{ voyage.pays.nom }}</td>
+			</tr>
+			<tr>
+				<th>DateDebut</th>
+				<td>{{ voyage.dateDebut ? voyage.dateDebut|date('d-m-Y') : '' }}</td>
+			</tr>
+			<tr>
+				<th>DateFin</th>
+				<td>{{ voyage.dateFin ? voyage.dateFin|date('d-m-Y') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Prix</th>
+				<td>{{ voyage.prix }}</td>
+			</tr>
+			<tr>
+				<th>Catégorie</th>
+				{% for categorie in voyage.categories %}
+					<td>{{categorie.nom}}</td>
+				{% endfor %}
+			</tr>
+		</tbody>
+	</table>
 
-    <a href="{{ path('app_voyages_index') }}">back to list</a>
+	<a href="{{ path('app_voyages_index') }}">back to list</a>
 
-    <a href="{{ path('app_voyages_edit', {'id': voyage.id}) }}">edit</a>
+	<a href="{{ path('app_voyages_edit', {'id': voyage.id}) }}">edit</a>
 
-    {{ include('voyages/_delete_form.html.twig') }}
+	{{ include('voyages/_delete_form.html.twig') }}
 {% endblock %}

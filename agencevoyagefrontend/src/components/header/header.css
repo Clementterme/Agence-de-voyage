@@ -1,0 +1,13 @@
+img {
+    width: 100%;
+}
+
+.header {
+    font-size: 50px;
+    font-weight: bold;
+    padding: 20px;
+    text-align: center;
+    background-image: url('/images/imageHeader.png');
+    background-size: cover;
+    height: 600px;
+}
