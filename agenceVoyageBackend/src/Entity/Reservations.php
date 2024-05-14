@@ -29,9 +29,6 @@ class Reservations
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $dateFin = null;
 
-    #[ORM\Column]
-    private ?int $nbJours = null;
-
     #[ORM\ManyToOne(inversedBy: 'reservations')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Statut $statut = null;
@@ -101,18 +98,6 @@ class Reservations
     public function setDateFin(\DateTimeInterface $dateFin): static
     {
         $this->dateFin = $dateFin;
-
-        return $this;
-    }
-
-    public function getNbJours(): ?int
-    {
-        return $this->nbJours;
-    }
-
-    public function setNbJours(int $nbJours): static
-    {
-        $this->nbJours = $nbJours;
 
         return $this;
     }

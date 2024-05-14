@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voyages{% endblock %}
+
+{% block body %}
+	<h1>Voyages</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Pays</th>
+				<th>Date de début</th>
+				<th>Date de fin</th>
+				<th>Prix</th>
+				<th>Catégorie</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for voyage in voyages %}
+				<tr>
+					<td>{{ voyage.id }}</td>
+					<td>{{ voyage.pays.nom }}</td>
+					<td>{{ voyage.dateDebut ? voyage.dateDebut|date('d-m-Y') : '' }}</td>
+					<td>{{ voyage.dateFin ? voyage.dateFin|date('d-m-Y') : '' }}</td>
+					<td>{{ voyage.prix }}</td>
+					{# <td>{{ voyage.categorie.nom }}</td> #}
+					{# <td>{{ voyage.getCategories() }}</td> #}
+					{% for categorie in voyage.categories %}
+						<td>{{categorie.nom}}</td>
+					{% endfor %}
+					<td>
+						<a href="{{ path('app_voyages_show', {'id': voyage.id}) }}">show</a>
+						<a href="{{ path('app_voyages_edit', {'id': voyage.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_voyages_new') }}">Créer un nouveau voyage</a>
+{% endblock %}

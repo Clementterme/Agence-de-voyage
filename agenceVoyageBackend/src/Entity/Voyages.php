@@ -23,7 +23,7 @@ class Voyages
     private ?\DateTimeInterface $dateFin = null;
 
     #[ORM\Column]
-    private ?int $prixJour = null;
+    private ?int $prix = null;
 
     /**
      * @var Collection<int, Categorie>
@@ -86,14 +86,14 @@ class Voyages
         return $this;
     }
 
-    public function getPrixJour(): ?int
+    public function getPrix(): ?int
     {
-        return $this->prixJour;
+        return $this->prix;
     }
 
-    public function setPrixJour(int $prixJour): static
+    public function setPrix(int $prix): static
     {
-        $this->prixJour = $prixJour;
+        $this->prix = $prix;
 
         return $this;
     }
