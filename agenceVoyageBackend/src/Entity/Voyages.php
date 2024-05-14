@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: VoyagesRepository::class)]
 class Voyages
@@ -17,22 +18,27 @@ class Voyages
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Groups('api_voyages_index')]
     private ?\DateTimeInterface $dateDebut = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Groups('api_voyages_index')]
     private ?\DateTimeInterface $dateFin = null;
 
     #[ORM\Column]
+    #[Groups('api_voyages_index')]
     private ?int $prix = null;
 
     /**
      * @var Collection<int, Categorie>
      */
     #[ORM\ManyToMany(targetEntity: Categorie::class, inversedBy: 'voyages')]
+    #[Groups('api_voyages_index')]
     private Collection $categories;
 
     #[ORM\ManyToOne(inversedBy: 'voyages')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups('api_voyages_index')]
     private ?Pays $pays = null;
 
     // /**
