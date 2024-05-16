@@ -1,11 +1,12 @@
 "use client";
 
-import Navbar from "@/components/navbar/Navbar";
-import VoyageListe from "@/components/voyageListe/VoyageListe";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./page.css";
 import { useEffect, useState } from "react";
+import Navbar from "@/components/navbar/Navbar";
+import VoyageDetails from "@/components/voyageDetails/VoyageDetails";
 
-export default function Voyages() {
+export default function VoyageSelectionneDetails(props) {
+  // Initialisation des états pour gérer le chargement, les erreurs, et les données reçues.
   const [loading, setLoading] = useState(true); // État de chargement des données.
   const [error, setError] = useState(false); // État pour capturer une éventuelle erreur lors du fetch.
   const [data, setData] = useState(null); // Stockage des données reçues du fetch.
@@ -13,13 +14,12 @@ export default function Voyages() {
   useEffect(() => {
     // Déclenchement de la récupération des données de personnages au montage du composant.
     try {
-      // fetch("https://rickandmortyapi.com/api/character")
-      fetch("http://127.0.0.1:8000/api/voyages")
+      fetch("http://127.0.0.1:8000/api/voyages/" + props.params.voyageId)
         .then((response) => response.json()) // Transformation de la réponse en JSON.
         .then((data) => {
           setLoading(false); // Arrêt de l'indicateur de chargement après la réception des données.
           setData(data); // Enregistrement des données reçues dans l'état 'data'.
-          // console.log(data);
+          console.log(data);
         });
     } catch (error) {
       setError(true); // Enregistrement de l'erreur dans l'état 'error'.
@@ -32,9 +32,15 @@ export default function Voyages() {
       <Navbar />
       {/* Affichage conditionnel en fonction de l'état du chargement et des erreurs */}
       {loading && !error && <div>Données en cours de chargement !</div>}
-      {/* {!loading && !error && data && <CharacterList characters={data} />} */}
-      {!loading && !error && data && <VoyageListe voyages={data} />}
-      {/* {!loading && !error && data && console.log(data)} */}
+      {!loading && !error && data && (
+        <VoyageDetails
+          pays={data.pays.nom}
+          dateDebut={data.dateDebut}
+          dateFin={data.dateFin}
+          categorie={data.categories[0].nom}
+          image={data.image}
+        />
+      )}
       {!loading && error && <div>Une erreur est survenue</div>}
     </main>
   );

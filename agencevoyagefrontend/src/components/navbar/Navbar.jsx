@@ -5,6 +5,7 @@ export default function Navbar() {
   let brand = "Simplon Voyages";
   return (
     <>
+      <title>Simplon Voyages</title>
       <div
         className="navbar bg-dark border-bottom border-body"
         data-bs-theme="dark"
