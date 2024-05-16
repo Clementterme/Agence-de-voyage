@@ -31,7 +31,7 @@ export default function Voyages() {
     <main>
       <Navbar />
       {/* Affichage conditionnel en fonction de l'état du chargement et des erreurs */}
-      {loading && !error && <div>Données en cours de chargement !</div>}
+      {loading && !error && <div>Chargement en cours ...</div>}
       {/* {!loading && !error && data && <CharacterList characters={data} />} */}
       {!loading && !error && data && <VoyageListe voyages={data} />}
       {/* {!loading && !error && data && console.log(data)} */}

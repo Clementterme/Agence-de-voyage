@@ -58,6 +58,12 @@ class Voyages
     #[ORM\OneToMany(targetEntity: Reservations::class, mappedBy: 'voyages')]
     private Collection $reservations;
 
+    #[ORM\Column(length: 50)]
+    private ?string $ville = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -210,6 +216,30 @@ class Voyages
                 $reservation->setVoyages(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): static
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

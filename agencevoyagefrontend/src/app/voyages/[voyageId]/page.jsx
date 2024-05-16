@@ -31,13 +31,14 @@ export default function VoyageSelectionneDetails(props) {
     <main>
       <Navbar />
       {/* Affichage conditionnel en fonction de l'état du chargement et des erreurs */}
-      {loading && !error && <div>Données en cours de chargement !</div>}
+      {loading && !error && <div>Chargement en cours ...</div>}
       {!loading && !error && data && (
         <VoyageDetails
           pays={data.pays.nom}
           dateDebut={data.dateDebut}
           dateFin={data.dateFin}
           categorie={data.categories[0].nom}
+          prix={data.prix}
           image={data.image}
         />
       )}

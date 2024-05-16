@@ -17,7 +17,6 @@ export default function Home() {
     <>
     <Navbar />
     <Header />
-    <button className="btn btn-danger">Cliquez ici</button>
     </>
   );
 }
