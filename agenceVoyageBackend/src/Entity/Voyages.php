@@ -59,9 +59,11 @@ class Voyages
     private Collection $reservations;
 
     #[ORM\Column(length: 50)]
+    #[Groups('api_voyages_index')]
     private ?string $ville = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups('api_voyages_index')]
     private ?string $image = null;
 
     public function __construct()

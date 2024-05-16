@@ -31,4 +31,13 @@
             font-size: 24px;
         }
     }
+    img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .img { 
+        justify-content: center;
+        display: flex;
+    }
 }

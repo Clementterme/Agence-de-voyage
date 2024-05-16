@@ -39,6 +39,7 @@ export default function VoyageSelectionneDetails(props) {
           dateFin={data.dateFin}
           categorie={data.categories[0].nom}
           prix={data.prix}
+          ville={data.ville}
           image={data.image}
         />
       )}

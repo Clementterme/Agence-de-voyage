@@ -23,6 +23,7 @@ export default function VoyageListe(props) {
                   dateDebut={voyages.dateDebut}
                   dateFin={voyages.dateFin}
                   categorie={voyages.categories[0].nom}
+                  ville={voyages.ville}
                   image={voyages.image}
                 />
               </li>
