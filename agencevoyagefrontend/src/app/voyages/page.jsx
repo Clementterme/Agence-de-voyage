@@ -1,5 +1,6 @@
 "use client";
 
+import "./page.css";
 import Navbar from "@/components/navbar/Navbar";
 import VoyageListe from "@/components/voyageListe/VoyageListe";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -28,14 +29,16 @@ export default function Voyages() {
   }, []); // Le tableau vide indique que cet effet ne s'exécute qu'au montage.
 
   return (
-    <main>
+    <>
       <Navbar />
-      {/* Affichage conditionnel en fonction de l'état du chargement et des erreurs */}
-      {loading && !error && <div>Chargement en cours ...</div>}
-      {/* {!loading && !error && data && <CharacterList characters={data} />} */}
-      {!loading && !error && data && <VoyageListe voyages={data} />}
-      {/* {!loading && !error && data && console.log(data)} */}
-      {!loading && error && <div>Une erreur est survenue</div>}
-    </main>
+      <main>
+        {/* Affichage conditionnel en fonction de l'état du chargement et des erreurs */}
+        {loading && !error && <div>Chargement en cours ...</div>}
+        {/* {!loading && !error && data && <CharacterList characters={data} />} */}
+        {!loading && !error && data && <VoyageListe voyages={data} />}
+        {/* {!loading && !error && data && console.log(data)} */}
+        {!loading && error && <div>Une erreur est survenue</div>}
+      </main>
+    </>
   );
 }

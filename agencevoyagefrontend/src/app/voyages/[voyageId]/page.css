@@ -1,5 +1,10 @@
 main {
     display: flex;
     flex-direction: column;
-    gap: 100px;
+    gap: 10px;
+    padding-top: 50px;
+}
+
+button {
+    margin-top: 40px;
 }

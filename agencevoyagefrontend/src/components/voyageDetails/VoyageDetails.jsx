@@ -8,8 +8,9 @@ export default function VoyageDetails(props) {
           <img src={props.image} />
         </div>
       <div className="voyage-card-information">
+        <p className="voyage-card-name">{props.ville}</p>
         <p className="voyage-card-name">{props.pays}</p>
-        <p className="voyage-card-species">{props.categorie}</p>
+        <p className="voyage-card-species">Catégorie : {props.categorie}</p>
         <p className="voyage-card-species">
           Disponible du
           {" " +props.dateDebut} au {props.dateFin}

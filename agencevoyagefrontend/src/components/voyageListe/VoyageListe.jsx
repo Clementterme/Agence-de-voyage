@@ -16,7 +16,7 @@ export default function VoyageListe(props) {
       {props.voyages && (
         <ul className="voyages-list">
           {props.voyages.map((voyages, index) => (
-            <Link key={index} href={"/voyages/" + voyages.id}>
+            <Link key={index} href={"/voyages/" + voyages.id} className="carteVoyage">
               <li>
                 <VoyageTeaser
                   pays={voyages.pays.nom}

@@ -10,7 +10,7 @@ export default function VoyageTeaser(props) {
         <div className="img">
           <img src={props.image} />
         </div>
-        <p className="voyage-card-species">{props.categorie}</p>
+        <p className="voyage-card-species">Catégorie : {props.categorie}</p>
         <p className="voyage-card-species">{props.dateDebut}</p>
         <p className="voyage-card-species">{props.dateFin}</p>
       </div>

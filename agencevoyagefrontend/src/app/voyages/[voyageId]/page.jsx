@@ -28,22 +28,82 @@ export default function VoyageSelectionneDetails(props) {
   }, []); // Le tableau vide indique que cet effet ne s'exécute qu'au montage.
 
   return (
-    <main>
+    <>
       <Navbar />
-      {/* Affichage conditionnel en fonction de l'état du chargement et des erreurs */}
-      {loading && !error && <div>Chargement en cours ...</div>}
-      {!loading && !error && data && (
-        <VoyageDetails
-          pays={data.pays.nom}
-          dateDebut={data.dateDebut}
-          dateFin={data.dateFin}
-          categorie={data.categories[0].nom}
-          prix={data.prix}
-          ville={data.ville}
-          image={data.image}
-        />
-      )}
-      {!loading && error && <div>Une erreur est survenue</div>}
-    </main>
+      <main>
+        {/* Affichage conditionnel en fonction de l'état du chargement et des erreurs */}
+        {loading && !error && <div>Chargement en cours ...</div>}
+        {!loading && !error && data && (
+          <VoyageDetails
+            pays={data.pays.nom}
+            dateDebut={data.dateDebut}
+            dateFin={data.dateFin}
+            categorie={data.categories[0].nom}
+            prix={data.prix}
+            ville={data.ville}
+            image={data.image}
+          />
+        )}
+        {!loading && error && <div>Une erreur est survenue</div>}
+        <h1 className="mx-5 mt-5">Demande de réservation</h1>
+        <form className="m-5">
+          <div class="mb-3">
+            <label for="inputNom" class="form-label">
+              Nom
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputNom"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="inputPrenom" class="form-label">
+              Prénom
+            </label>
+            <input type="text" class="form-control" id="inputPrenom" />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">
+              Email
+            </label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="inputDate" class="form-label">
+              Date de départ
+            </label>
+            <input
+              type="date"
+              class="form-control"
+              id="inputDate"
+              name="date"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="inputDate" class="form-label">
+              Date de retour
+            </label>
+            <input
+              type="date"
+              class="form-control"
+              id="inputDate"
+              name="date"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Envoyer
+          </button>
+        </form>
+      </main>
+    </>
   );
 }
