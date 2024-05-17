@@ -15,6 +15,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class VoyagesType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options): void {
         $builder
+            ->add('ville')
+            ->add('pays', EntityType::class, [
+                'class' => Pays::class,
+                'choice_label' => 'nom',
+            ])
             ->add('dateDebut', DateType::class, [
                 'widget' => 'single_text',
                 'label' => 'Date de début'
@@ -24,15 +29,12 @@ class VoyagesType extends AbstractType {
                 'label' => 'Date de fin'
             ])
             ->add('prix')
+            ->add('image')
             ->add('categories', EntityType::class, [
                 'class' => Categorie::class,
                 'choice_label' => 'nom',
                 'label' => 'Catégorie(s)',
                 'multiple' => true,
-            ])
-            ->add('pays', EntityType::class, [
-                'class' => Pays::class,
-                'choice_label' => 'nom',
             ])
             ->add('User', EntityType::class, [
                 'class' => User::class,
